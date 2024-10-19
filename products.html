@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Produtos</title>
+    <style>
+      .product-card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+      }
+      .product-card img {
+        max-width: 100%;
+        height: auto;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #333;
+        margin-bottom: 20px;
+      }
+      #products-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="products-container"></div>
+
+    <!-- Script para carregar os produtos -->
+    <script src="./src/products.js"></script>
+  </body>
+</html>
