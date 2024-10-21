@@ -6,9 +6,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Função para carregar categorias
 async function loadCategories() {
   try {
-    const categoryResponse = await fetch(
-      "http://localhost:3000/v1/categories/"
-    );
+    const token = localStorage.getItem("token"); // Obtém o token do localStorage
+    if (!token) {
+      alert("Você precisa estar autenticado para carregar as categorias.");
+      window.location.href = "login.html"; // Redireciona para a página de login
+      return;
+    }
+
+    const categoryResponse = await fetch("http://localhost:3000/api/categories/", {
+      headers: {
+        "Authorization": `Bearer ${token}`, // Adiciona o token no cabeçalho
+      },
+    });
+
     const categories = await categoryResponse.json();
     const categorySelect = document.getElementById("product-category");
 
@@ -51,9 +61,19 @@ async function addProduct(event) {
   }
 
   try {
+    const token = localStorage.getItem("token"); // Obtém o token do localStorage
+    if (!token) {
+      alert("Você precisa estar autenticado para adicionar produtos.");
+      window.location.href = "login.html"; // Redireciona para a página de login
+      return;
+    }
+
     // Enviar o produto para a API
-    const response = await fetch("http://localhost:3000/v1/menu/", {
+    const response = await fetch("http://localhost:3000/api/menu/", {
       method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`, // Adiciona o token no cabeçalho
+      },
       body: formData, // O FormData automaticamente define os headers corretamente
     });
 

@@ -21,7 +21,7 @@ document
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/v1/menu/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/menu/${id}`, {
         method: "PUT",
         body: formData,
       });
